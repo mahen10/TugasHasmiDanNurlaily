@@ -9,8 +9,7 @@ from dotenv import load_dotenv
 # ===============================
 # LOAD API KEY
 # ===============================
-load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
 if not GROQ_API_KEY:
     st.error("🚨 API Key 'GROQ_API_KEY' tidak ditemukan! Cek file .env kamu.")
@@ -164,3 +163,4 @@ for msg in st.session_state.chat_history:
 for msg in st.session_state.chat_history:
             role = "👤 You" if msg["role"] == "user" else "🤖 Copilot"
             st.markdown(f"**{role}:** {msg['content']}")
+
